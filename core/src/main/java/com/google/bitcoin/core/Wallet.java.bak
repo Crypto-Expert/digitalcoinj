@@ -2240,7 +2240,7 @@ public class Wallet implements Serializable, BlockChainListener, PeerFilterProvi
         lock.lock();
         try {
             StringBuilder builder = new StringBuilder();
-            builder.append(String.format("Wallet containing %s %s in:%n", bitcoinValueToFriendlyString(getBalance()), CoinDefinition.coinTicker));
+            builder.append(String.format("Wallet containing %s BTC in:%n", bitcoinValueToFriendlyString(getBalance())));
             builder.append(String.format("  %d unspent transactions%n", unspent.size()));
             builder.append(String.format("  %d spent transactions%n", spent.size()));
             builder.append(String.format("  %d pending transactions%n", pending.size()));

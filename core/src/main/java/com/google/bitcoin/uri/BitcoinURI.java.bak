@@ -87,7 +87,7 @@ public class BitcoinURI {
     public static final String FIELD_AMOUNT = "amount";
     public static final String FIELD_ADDRESS = "address";
 
-    public static final String BITCOIN_SCHEME = CoinDefinition.coinURIScheme;
+    public static final String BITCOIN_SCHEME = "bitcoin";
     private static final String ENCODED_SPACE_CHARACTER = "%20";
     private static final String AMPERSAND_SEPARATOR = "&";
     private static final String QUESTION_MARK_SEPARATOR = "?";
@@ -138,14 +138,10 @@ public class BitcoinURI {
         // the & (%26) in Tom and Jerry gets interpreted as a separator and the label then gets parsed
         // as 'Tom ' instead of 'Tom & Jerry')
         String schemeSpecificPart;
-
-        String scheme1 = BITCOIN_SCHEME + "://";
-        String scheme2 = BITCOIN_SCHEME + ":";
-
-        if (input.startsWith(scheme1)) {
-            schemeSpecificPart = input.substring(scheme1.length());
-        } else if (input.startsWith(scheme2)) {
-            schemeSpecificPart = input.substring(scheme2.length());
+        if (input.startsWith("bitcoin://")) {
+            schemeSpecificPart = input.substring("bitcoin://".length());
+        } else if (input.startsWith("bitcoin:")) {
+            schemeSpecificPart = input.substring("bitcoin:".length());
         } else {
             throw new BitcoinURIParseException("Unsupported URI scheme: " + uri.getScheme());
         }

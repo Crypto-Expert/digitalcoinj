@@ -510,16 +510,6 @@ public class Block extends Message {
         }
     }
 
-    private Sha256Hash calculateScryptHash() {
-        try {
-            ByteArrayOutputStream bos = new UnsafeByteArrayOutputStream(HEADER_SIZE);
-            writeHeader(bos);
-            return new Sha256Hash(Utils.reverseBytes(scryptDigest(bos.toByteArray())));
-        } catch (IOException e) {
-            throw new RuntimeException(e); // Cannot happen.
-        }
-    }
-
     /**
      * Returns the hash of the block (which for a valid, solved block should be below the target) in the form seen on
      * the block explorer. If you call this on block 1 in the production chain
@@ -527,10 +517,6 @@ public class Block extends Message {
      */
     public String getHashAsString() {
         return getHash().toString();
-    }
-
-    public String getScryptHashAsString() {
-        return getScryptHash().toString();
     }
 
     /**
@@ -542,13 +528,6 @@ public class Block extends Message {
             hash = calculateHash();
         return hash;
     }
-
-    public Sha256Hash getScryptHash() {
-        if (scryptHash == null)
-            scryptHash = calculateScryptHash();
-        return scryptHash;
-    }
-
 
     /**
      * The number that is one greater than the largest representable SHA-256
@@ -666,11 +645,11 @@ public class Block extends Message {
         // field is of the right value. This requires us to have the preceeding blocks.
         BigInteger target = getDifficultyTargetAsInteger();
 
-        BigInteger h = getScryptHash().toBigInteger();
+        BigInteger h = getHash().toBigInteger();
         if (h.compareTo(target) > 0) {
             // Proof of work check failed!
             if (throwException)
-                throw new VerificationException("Hash is higher than target: " + getScryptHashAsString() + " vs "
+                throw new VerificationException("Hash is higher than target: " + getHashAsString() + " vs "
                         + target.toString(16));
             else
                 return false;
@@ -901,7 +880,6 @@ public class Block extends Message {
         unCacheHeader();
         this.prevBlockHash = prevBlockHash;
         this.hash = null;
-        this.scryptHash = null;
     }
 
     /**
@@ -924,7 +902,6 @@ public class Block extends Message {
         unCacheHeader();
         this.time = time;
         this.hash = null;
-        this.scryptHash = null;
     }
 
     /**
@@ -946,7 +923,6 @@ public class Block extends Message {
         unCacheHeader();
         this.difficultyTarget = compactForm;
         this.hash = null;
-        this.scryptHash = null;
     }
 
     /**
@@ -963,7 +939,6 @@ public class Block extends Message {
         unCacheHeader();
         this.nonce = nonce;
         this.hash = null;
-        this.scryptHash = null;
     }
 
     /** Returns an immutable list of transactions held in this block. */
