@@ -32,8 +32,8 @@ public class UnitTestParams extends NetworkParameters {
         id = ID_UNITTESTNET;
         packetMagic = 0x0b110907;
         addressHeader = CoinDefinition.testnetAddressHeader;
-        p2shHeader = CoinDefinition.testnetp2shHeader;
-        acceptableAddressCodes = new int[] { addressHeader, p2shHeader };
+
+        acceptableAddressCodes = new int[] { addressHeader };
         proofOfWorkLimit = new BigInteger("00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff", 16);
         genesisBlock.setTime(System.currentTimeMillis() / 1000);
         genesisBlock.setDifficultyTarget(Block.EASIEST_DIFFICULTY_TARGET);

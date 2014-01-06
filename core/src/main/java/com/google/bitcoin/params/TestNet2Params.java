@@ -34,8 +34,7 @@ public class TestNet2Params extends NetworkParameters {
 
         port = CoinDefinition.TestPort;
         addressHeader = CoinDefinition.testnetAddressHeader;
-        p2shHeader = CoinDefinition.testnetp2shHeader;
-        acceptableAddressCodes = new int[] { addressHeader, p2shHeader };
+        acceptableAddressCodes = new int[] { addressHeader };
         interval = INTERVAL;
         targetTimespan = TARGET_TIMESPAN;
         proofOfWorkLimit = CoinDefinition.proofOfWorkLimit;

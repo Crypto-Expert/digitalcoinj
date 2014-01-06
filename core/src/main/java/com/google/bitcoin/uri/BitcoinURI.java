@@ -22,6 +22,7 @@ import com.google.bitcoin.core.Address;
 import com.google.bitcoin.core.AddressFormatException;
 import com.google.bitcoin.core.NetworkParameters;
 import com.google.bitcoin.core.Utils;
+import com.google.bitcoin.core.CoinDefinition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

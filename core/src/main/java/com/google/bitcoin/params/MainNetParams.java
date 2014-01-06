@@ -34,8 +34,8 @@ public class MainNetParams extends NetworkParameters {
         proofOfWorkLimit = CoinDefinition.proofOfWorkLimit;
         dumpedPrivateKeyHeader = 128 + CoinDefinition.AddressHeader;
         addressHeader = CoinDefinition.AddressHeader;
-        p2shHeader = CoinDefinition.p2shHeader;
-        acceptableAddressCodes = new int[] { addressHeader, p2shHeader};
+
+        acceptableAddressCodes = new int[] { addressHeader};
 
         port = CoinDefinition.Port;
         packetMagic = CoinDefinition.PacketMagic;

@@ -36,6 +36,7 @@ import java.util.List;
 
 import static com.google.bitcoin.core.Utils.doubleDigest;
 import static com.google.bitcoin.core.Utils.doubleDigestTwoBuffers;
+import static com.google.bitcoin.core.Utils.scryptDigest;
 
 /**
  * <p>A block is a group of transactions, and is one of the fundamental data structures of the Bitcoin system.

@@ -38,8 +38,7 @@ public class TestNet3Params extends NetworkParameters {
         proofOfWorkLimit = Utils.decodeCompactBits(0x1d00ffffL);
         port = 18333;
         addressHeader = CoinDefinition.testnetAddressHeader;
-        p2shHeader = CoinDefinition.testnetp2shHeader;
-        acceptableAddressCodes = new int[] { addressHeader, p2shHeader };
+        acceptableAddressCodes = new int[] { addressHeader};
         dumpedPrivateKeyHeader = 128 + CoinDefinition.testnetAddressHeader;
         genesisBlock.setTime(CoinDefinition.testnetGenesisBlockTime);
         genesisBlock.setDifficultyTarget(CoinDefinition.testnetGenesisBlockDifficultyTarget);
