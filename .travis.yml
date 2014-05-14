@@ -1,11 +1,10 @@
 language: java
 
 before_install:
-  - mvn install -DskipTests=true
+  - mvn install -Dmaven.test.skip=true
 
 install:
- - mvn clean package
- - mvn install
+ - mvn clean package -Dmaven.test.skip=true
 
  
 notifications:
