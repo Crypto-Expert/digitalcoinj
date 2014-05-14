@@ -1,0 +1,17 @@
+language: java
+
+before_install:
+  - mvn install -DskipTests=true
+
+install:
+ - mvn install 
+
+ 
+notifications:
+  irc:
+    channels:
+      - "chat.freenode.net#cryptopools"
+    template:
+      -"%{repository}/%{branch} (%{commit} - %{author}): %{message}, Result: %{result}, Build Time: %{duration}"
+      - "Change view : %{compare_url}"
+      - "Build details : %{build_url}"
